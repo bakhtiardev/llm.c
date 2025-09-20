@@ -125,6 +125,9 @@ class GPTConfig:
     n_head: int = 12
     n_embd: int = 768
 
+# obj = GPTConfig(block_size=1024, vocab_size=50257, n_layer=12, n_head=2, n_embd=768)
+# obj.block_size
+# obj.n_head
 class GPT(nn.Module):
 
     def __init__(self, config):
@@ -582,7 +585,7 @@ if __name__ == "__main__":
     assert 1 <= T <= 1024
     assert args.dtype in {"float32", "float16", "bfloat16"}
     assert args.model in {"gpt2", "gpt2-medium", "gpt2-large", "gpt2-xl", "d12", "d24", "d36", "d48"}
-
+    
     # set up DDP (distributed data parallel). torchrun sets this env variable
     ddp = int(os.environ.get('RANK', -1)) != -1 # is this a ddp run?
     if ddp:
