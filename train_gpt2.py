@@ -125,9 +125,6 @@ class GPTConfig:
     n_head: int = 12
     n_embd: int = 768
 
-# obj = GPTConfig(block_size=1024, vocab_size=50257, n_layer=12, n_head=2, n_embd=768)
-# obj.block_size
-# obj.n_head
 class GPT(nn.Module):
 
     def __init__(self, config):
@@ -191,6 +188,7 @@ class GPT(nn.Module):
             logits = None
 
         return logits, loss
+    # print(a.keys()) = ['a', 'b', 'c']
 
     @classmethod
     def from_pretrained(cls, model_type):
